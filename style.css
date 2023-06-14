@@ -101,6 +101,17 @@ header ul a {
 }
 
 main {
+  position: relative;
   background-color: #353;
   height: 100vh; /*means height = 100% of window height*/
+  width:100vw;/*means width = 100% of window height*/
+  overflow: hidden; /*anything below window height will be clipped*/
+}
+
+.bg-img{
+  position: absolute;
+  width:2800px;
+  top:calc(50% - 390px);
+  left:calc(50% + 10px);
+  transform:translate(-50%, -50%);
 }
