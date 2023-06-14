@@ -17,25 +17,71 @@ body{
 }
 .header{
   width:100%;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1); /*Not working?*/
 }
 header nav{
   background-color: red;
-  max-width: 1920px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center; /*logo wont stretch vertically*/
 }
 
 header ul{
   display: flex;
-  list-style: none;
+  list-style: none; /* Get rid of the Dots for lists */
   align-items: center;
 }
 
 header ul a{
-  text-decoration: none;
-  ;
+  text-decoration: none;  /*Get rid of Ugly Underline */
+  color: white;
+  padding: 0 1.5rem;
+  text-transform: uppercase; /*to turn all Letters into UPPERCASE*/
+  font-weight: 300;
+  font-size: 0.83rem;
+}
+
+.search a{
+  font-size: 1.05rem;
+  padding: 0 3rem;
+}
+
+.hamburger{
+  padding-left:  1.5rem;
+}
+.hamburger a{
+  padding: 0; /*Missing this was annoying for middle line of hamburger */
+  width : 37px;
+  height: 37px;
+  display: flex;
+  border-radius : 50%;
+  background-color: rgba(115,115,115,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+}
+.hamburger .bar{
+  position: relative;
+  height: 1.3px;
+  width: 52%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.hamburger.bar::before, .hamburger.bar::after{
+  content: ""; /*V imp*/
+  position: absolute; /*Will move relative to Middle line */
+  left: 50%;
+  width: 60%;
+  height: 100%;
+  background-color: inherit;
+  border-radius:  2px;
+}
+
+.hamburger.bar::after{
+  top: -4.5px;
 }
