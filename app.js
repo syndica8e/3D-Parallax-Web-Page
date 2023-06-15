@@ -6,6 +6,7 @@ let xValue = 0,
 window.addEventListener("mousemove", (e) => {
   xValue = e.clientX - window.innerWidth / 2; /*event object*/
   yValue = e.clientY - window.innerHeight / 2; /*getting centre position*/
+  let zValue = 100;
   /*mouse is now relative to the centre of the screen*/
   console.log(xValue, yValue); /*shows mouse coordinates*/
 
@@ -13,6 +14,10 @@ window.addEventListener("mousemove", (e) => {
     let speedx = el.dataset.speedx;
     let speedy = el.dataset.speedy;
 
-    el.style.transform = `translateX(calc(-50% + ${-xValue * speedx}px)) translateY(calc(-50% + ${yValue * speedy}px)`;
+    
+    let zValue = e.clientX - parseFloat(getComputedStyle(el).left) ;
+
+
+    el.style.transform = `translateX(calc(-50% + ${-xValue * speedx}px)) translateY(calc(-50% + ${yValue *speedy}px)) perspective(2300px) translateZ(${zValue}px)`;
   });
 });
