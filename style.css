@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap");
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+::selection{
+  background-color: #0b372dbb;
+}
+
+.logo {
+  width: 200px;
+}
+
+header {
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  padding: 0.9rem 0;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+header nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*logo wont stretch vertically*/
+}
+
+header ul {
+  display: flex;
+  list-style: none; /* Get rid of the Dots for lists */
+  align-items: center;
+}
+
+header ul a {
+  text-decoration: none; /*Get rid of Ugly Underline */
+  color: white; /*color text*/
+  padding: 0 1.5rem;
+  text-transform: uppercase; /*to turn all Letters into UPPERCASE*/
+  font-weight: 300;
+  font-size: 0.83rem;
+}
+
+.search a {
+  font-size: 1.05rem;
+  padding: 0 3rem;
+}
+
+.hamburger {
+  padding-left: 1.5rem;
+}
+
+.hamburger a {
+  padding: 0; /*Missing this was annoying for middle line of hamburger */
+  width: 37px;
+  height: 37px;
+  display: flex;
+  border-radius: 50%;
+  background-color: rgba(115, 115, 115, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger .bar {
+  position: relative;
+  width: 52%;
+  height: 1.3px;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.hamburger.bar::before,
+.hamburger.bar::after {
+  content: ""; /*V imp*/
+  position: absolute; /*Will move relative to Middle line */
+  left: 50%;
+  transform: translate(-50%);
+  width: 60%;
+  height: 100%;
+  background-color: inherit;
+  border-radius: 2px;
+}
+
+.hamburger.bar::before {
+  top: -4.5px;
+}
+
+.hamburger.bar::after {
+  top: 4.5px;
+}
+
+main {
+  position: relative;
+  background-color: #353;
+  height: 100vh; /*means height = 100% of window height*/
+  width: 100vw; /*means width = 100% of window height*/
+  overflow: hidden; /*anything below window height will be clipped*/
+}
+
+.parallax {
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.45s cubic-bezier(.2,.49,.32,.99)
+}
+.bg-img {
+  position: absolute;
+  width: 2800px;
+  top: calc(50% - 390px);
+  left: calc(50% + 10px);
+  z-index: 1;
+}
+
+.fog-7 {
+  position: absolute;
+  z-index: 2;
+  width: 1900px;
+  top: calc(50% - 100px);
+  left: calc(50% + 300px);
+}
+
+.mountain-10 {
+  position: absolute;
+  z-index: 3;
+  width: 892px;
+  top: calc(50% + 69px);
+  left: calc(50% + 230px);
+}
+
+.fog-6 {
+  position: absolute;
+  z-index: 4;
+  width: 1610px;
+  top: calc(50% + 85px);
+  left: calc(50% + 10px);
+}
+
+.mountain-9 {
+  position: absolute;
+  z-index: 5;
+  width: 470px;
+  top: calc(50% + 113px);
+  left: calc(50% - 457px);
+}
+
+.mountain-8 {
+  position: absolute;
+  z-index: 6;
+  width: 810px;
+  top: calc(50% + 86px);
+  left: calc(50% - 202px);
+}
+
+.fog-5 {
+  position: absolute;
+  z-index: 7;
+  width: 450px;
+  top: calc(50% + 160px);
+  left: calc(50% + 20px);
+}
+
+.mountain-7 {
+  position: absolute;
+  z-index: 8;
+  width: 538px;
+  top: calc(50% + 123px);
+  left: calc(50% + 305px);
+}
+
+.text {
+  position: absolute;
+  z-index: 9;
+  top: calc(50% - 130px);
+  left: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: auto;
+  color: #fff;
+}
+
+.text h2 {
+  font-weight: 100;
+  font-size: 6.5rem;
+  line-height: 0.88;
+}
+
+.text h1 {
+  font-weight: 800;
+  font-size: 8.5rem;
+  line-height: 0.88;
+}
+
+.mountain-6 {
+  position: absolute;
+  z-index: 10;
+  top: calc(50% + 60px);
+  width: 408px;
+  left: calc(50% + 590px);
+}
+
+.fog-4 {
+  position: absolute;
+  z-index: 11;
+  top: calc(50% + 223px);
+  left: calc(50% - 60px);
+  width: 590px;
+}
+
+.mountain-5 {
+  position: absolute;
+  z-index: 12;
+  top: calc(50% + 269px);
+  width: 583px;
+  left: calc(50% + 130px);
+}
+
+.fog-3 {
+  position: absolute;
+  z-index: 13;
+  top: calc(50% + 110px);
+  left: calc(50% - 15px);
+  width: 1600px;
+}
+
+.mountain-4 {
+  position: absolute;
+  z-index: 14;
+  top: calc(50% + 196px);
+  width: 780px;
+  left: calc(50% - 381.5px);
+}
+
+.mountain-3 {
+  /*right most*/
+  position: absolute;
+  z-index: 15;
+  top: calc(50% + 133px);
+  left: calc(50% + 736px);
+  width: 419px;
+}
+
+.fog-2 {
+  position: absolute;
+  z-index: 16;
+  top: calc(50% + 177px);
+  left: calc(50% - 30px);
+  width: 1418px;
+}
+
+.mountain-2 {
+  /*right front 2nd*/
+  position: absolute;
+  z-index: 17;
+  top: calc(50% + 140px);
+  left: calc(50% + 412px);
+  width: 625px;
+} /*fixed*/
+
+.mountain-1 {
+  /*left most*/
+  position: absolute;
+  z-index: 18;
+  top: calc(50% + 17px);
+  left: calc(50% - 601px);
+  width: 530px;
+} /*fixed*/
+
+.sun-rays {
+  position: absolute;
+  z-index: 19;
+  top: 0;
+  right: 0;
+  width: 595px;
+  pointer-events: none;
+}
+
+.black-shadow {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.fog-1 {
+  position: absolute;
+  z-index: 21;
+  width: 1600px;
+  top: calc(100% - 355px);
+  left: 50%;
+}
+
+.vignette {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 65%,
+    rgba(0, 0, 0, 0.7)
+  );
+  pointer-events: none;
+}
