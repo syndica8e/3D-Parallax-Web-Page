@@ -11,6 +11,9 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+::selection{
+  background-color: #0b372dbb;
+}
 
 .logo {
   width: 200px;
