@@ -3,12 +3,15 @@ const parallax_el = document.querySelectorAll(".parallax");
 let xValue = 0,
   yValue = 0; /*tracking image displacement*/
 
+let rotateDegree = 0;
+
 window.addEventListener("mousemove", (e) => {
   xValue = e.clientX - window.innerWidth / 2; /*event object*/
   yValue = e.clientY - window.innerHeight / 2; /*getting centre position*/
-  let zValue = 100;
   /*mouse is now relative to the centre of the screen*/
   console.log(xValue, yValue); /*shows mouse coordinates*/
+
+  rotateDegree = (xValue / (window.innerWidth / 2)) * 20; //rotate value 0 to 20
 
   parallax_el.forEach((el) => {
     let speedx = el.dataset.speedx;
@@ -22,6 +25,6 @@ window.addEventListener("mousemove", (e) => {
       -xValue * speedx
     }px)) translateY(calc(-50% + ${
       yValue * speedy
-    }px)) perspective(2300px) translateZ(${zValue * speedz}px)`;
+    }px)) perspective(2300px) translateZ(${zValue * speedz}px) rotateY(${rotateDegree}deg)`;
   });
 });
