@@ -118,9 +118,9 @@ main {
 }
 .bg-img {
   position: absolute;
-  width:3050px;
-  top: calc(50% - 230px);
-  left: calc(50% + 10px);
+  width:211.80%; /*divide by 1440*/
+  top: calc(50% - 28.39%); /*divide by 810px =28.39%*/
+  left: calc(50% + 0.69%); /* 10px / 1440px */
   z-index: 1;
 } /*fixed*/
 
