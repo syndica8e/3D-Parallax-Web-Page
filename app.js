@@ -1,4 +1,5 @@
 const parallax_el = document.querySelectorAll(".parallax");
+const main = document.querySelector("main");
 
 let xValue = 0,
   yValue = 0; /*tracking image displacement*/
@@ -14,7 +15,8 @@ function update(cursorPosition) {
 
     let isInLeft =
       parseFloat(getComputedStyle(el).left) < window.innerWidth / 2 ? 1 : -1;
-    let zValue = (cursorPosition - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.1;
+    let zValue = 
+    (cursorPosition - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.1;
 
     el.style.transform = `translateX(calc(-50% + ${
       -xValue * speedx
@@ -37,11 +39,51 @@ window.addEventListener("mousemove", (e) => {
   update(e.clientX);
 });
 
+if(window.innerWidth >= 725) {
+  main.style.maxHeight = `${window.innerWidth * 0.6}px`;
+} else {
+  main.style.maxHeight = `${window.innerWidth * 1.6}px`;
+}
+
 /*GSAP Animations*/
 
 let timeline = gsap.timeline();
 
-timeline.from(".bg-img", {
-  top: `${+document.querySelector(".bg-img").offsetHeight / 2 -200}px`,
-  duration: 3.5,
-})
+Array.from(parallax_el)
+.filter((el) => !el.classList.contains("text"))
+.forEach((el) => {
+    timeline.from(
+        el, 
+        {
+            top: `${el.offsetHeight / 2 + +el.dataset.distance}px`,
+            duration: 3.5,
+            ease: "power3.out",
+        },
+        "1"
+    );
+});
+
+timeline.from(".text h1", {
+    y: window.innerHeight - document.querySelector(".text h1").getBoundingClientRect().top + 
+    200,
+    duration: 2,
+},
+"2.5"
+)
+.from(
+    ".text h2",
+    {
+        y: -150,
+        opacity: 0,
+        duration: 1.5,
+    },
+    "3"
+)
+.from(
+    ".hide", 
+{
+    opacity: 0,
+    duration: 1.5,
+},
+"3"
+);
