@@ -118,9 +118,9 @@ main {
 }
 .bg-img {
   position: absolute;
-  width:3050px;
-  top: calc(50% - 230px);
-  left: calc(50% + 10px);
+  width:211.80%; /*divide by 1440*/
+  top: calc(50% - 28.39%); /*divide by 810px =28.39%*/
+  left: calc(50% + 0.69%); /* 10px / 1440px */
   z-index: 1;
 } /*fixed*/
 
@@ -250,7 +250,7 @@ main {
   position: absolute;
   z-index: 15;
   top: calc(50% + 165px);
-  left: calc(50% + 820px);
+  left: calc(50% + 880px);
   width: 419px;
 }
 
@@ -301,7 +301,7 @@ main {
 .fog-1 {
   position: absolute;
   z-index: 21;
-  width: 2200px;
+  width: 2300px;
   top: calc(100% - 255px);
   left: 50%;
 }/*fixed*/
@@ -313,10 +313,64 @@ main {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: radial-gradient(
+  background-color: red;
+  background: radial-gradient(
     ellipse at center,
     rgba(0, 0, 0, 0) 65%,
     rgba(0, 0, 0, 0.7)
   );
   pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+.text h1{
+    font-size: 5.8rem;
+    line-height: 1.1;
+}
+
+.text h2{
+  font-size: 4.1rem;
+  line-height: 1.1;
+}
+
+header nav{
+  padding : 0 1rem;
+}
+
+.logo{
+  width: 75px;
+}
+
+header ul a {
+  font-size: 0.73rem;
+  padding: 0 0.9rem;
+}
+
+.search a{
+  font0size: 0.85rem;
+  padding: 0 1.8rem;
+}
+
+.hamburger{
+  padding-left:  0.9rem;
+}
+
+.hamburger a{
+  height:  30px;
+  width:  30px;
+}
+.bg-img {
+  width: initial;
+  height: 311.104;
+}
+}
+
+@media (max-width: 520px) {
+  .text h1{
+      font-size: 3.3rem;
+  }
+  
+  .text h2{
+    font-size: 2.6rem;
+  }
 }
