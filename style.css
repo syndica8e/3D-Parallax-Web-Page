@@ -118,11 +118,11 @@ main {
 }
 .bg-img {
   position: absolute;
-  width: 2800px;
+  width:3050px;
   top: calc(50% - 290px);
   left: calc(50% + 10px);
   z-index: 1;
-}
+} /*fixed*/
 
 .fog-7 {
   position: absolute;
@@ -133,17 +133,18 @@ main {
 }
 
 .mountain-10 {
+  /*backmost*/
   position: absolute;
   z-index: 3;
   width: 892px;
   top: calc(50% + 69px);
   left: calc(50% + 230px);
-}
+}/*fixed*/
 
 .fog-6 {
   position: absolute;
   z-index: 4;
-  width: 2200px;
+  width: 3000px;
   top: calc(50% + 85px);
   left: calc(50% + 10px);
 }
@@ -151,16 +152,16 @@ main {
 .mountain-9 {
   position: absolute;
   z-index: 5;
-  width: 490px;
-  top: calc(50% + 113px);
-  left: calc(50% - 457px);
+  width: 520px;
+  top: calc(50% + 152px);
+  left: calc(50% - 620px);
 }
 
 .mountain-8 {
   position: absolute;
   z-index: 6;
-  width: 910px;
-  top: calc(50% + 86px);
+  width: 995px;
+  top: calc(50% + 95px);
   left: calc(50% - 202px);
 }
 
@@ -175,7 +176,7 @@ main {
 .mountain-7 {
   position: absolute;
   z-index: 8;
-  width: 538px;
+  width: 638px;
   top: calc(50% + 123px);
   left: calc(50% + 305px);
 }
@@ -222,10 +223,10 @@ main {
 .mountain-5 {
   position: absolute;
   z-index: 12;
-  top: calc(50% + 269px);
+  top: calc(50% + 330px);
   width: 590px;
-  left: calc(50% + 130px);
-}
+  left: calc(50% + 30px);
+}/*fixed*/
 
 .fog-3 {
   position: absolute;
@@ -238,8 +239,8 @@ main {
 .mountain-4 {
   position: absolute;
   z-index: 14;
-  top: calc(50% + 196px);
-  width: 780px;
+  top: calc(50% + 256px);
+  width: 880px;
   left: calc(50% - 381.5px);
 }
 
@@ -248,7 +249,7 @@ main {
   position: absolute;
   z-index: 15;
   top: calc(50% + 133px);
-  left: calc(50% + 736px);
+  left: calc(50% + 820px);
   width: 419px;
 }
 
@@ -264,7 +265,7 @@ main {
   /*right front 2nd*/
   position: absolute;
   z-index: 17;
-  top: calc(50% + 140px);
+  top: calc(50% + 220px);
   left: calc(50% + 412px);
   width: 625px;
 } /*fixed*/
@@ -273,9 +274,9 @@ main {
   /*left most*/
   position: absolute;
   z-index: 18;
-  top: calc(50% + 17px);
-  left: calc(50% - 720px);
-  width: 530px;
+  top: calc(50% + 25px);
+  left: calc(50% - 870px);
+  width: 580px;
 } /*fixed*/
 
 .sun-rays {
@@ -299,10 +300,10 @@ main {
 .fog-1 {
   position: absolute;
   z-index: 21;
-  width: 1800px;
+  width: 2200px;
   top: calc(100% - 355px);
   left: 50%;
-}
+}/*fixed*/
 
 .vignette {
   position: absolute;
