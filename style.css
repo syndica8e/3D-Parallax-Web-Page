@@ -250,7 +250,7 @@ main {
   position: absolute;
   z-index: 15;
   top: calc(50% + 165px);
-  left: calc(50% + 820px);
+  left: calc(50% + 880px);
   width: 419px;
 }
 
@@ -301,7 +301,7 @@ main {
 .fog-1 {
   position: absolute;
   z-index: 21;
-  width: 2200px;
+  width: 2300px;
   top: calc(100% - 255px);
   left: 50%;
 }/*fixed*/
