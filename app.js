@@ -29,9 +29,13 @@ function update(cursorPosition) {
 update(0);
 
 window.addEventListener("mousemove", (e) => {
+
+  if(timeline.isActive()) return;
+
   xValue = e.clientX - window.innerWidth / 2; /*event object*/
   yValue = e.clientY - window.innerHeight / 2; /*getting centre position*/
   /*mouse is now relative to the centre of the screen*/
+  
   console.log(xValue, yValue); /*shows mouse coordinates*/
 
   rotateDegree = (xValue / (window.innerWidth / 2)) * 20; //rotate value 0 to 20
