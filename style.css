@@ -83,8 +83,8 @@ header ul a {
   border-radius: 2px;
 }
 
-.hamburger.bar::before,
-.hamburger.bar::after {
+.hamburger .bar::before,
+.hamburger .bar::after {
   content: ""; /*V imp*/
   position: absolute; /*Will move relative to Middle line */
   left: 50%;
@@ -95,11 +95,11 @@ header ul a {
   border-radius: 2px;
 }
 
-.hamburger.bar::before {
+.hamburger .bar::before {
   top: -4.5px;
 }
 
-.hamburger.bar::after {
+.hamburger .bar::after {
   top: 4.5px;
 }
 
