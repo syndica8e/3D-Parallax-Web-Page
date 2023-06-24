@@ -118,11 +118,11 @@ main {
 }
 .bg-img {
   position: absolute;
-  width: 175%;
-  top: 1.8%;
-  left: 50%;
+  width:211.80%; /*divide by 1440*/
+  top: calc(50% - 28.39%); /*divide by 810px =28.39%*/
+  left: calc(50% + 0.69%); /* 10px / 1440px */
   z-index: 1;
-}
+} /*fixed*/
 
 .fog-7 {
   position: absolute;
@@ -259,7 +259,7 @@ main {
   z-index: 16;
   top: calc(50% + 210px);
   left: calc(50% - 30px);
-  width: 1560px;
+  width: 1418px;
 }
 
 .mountain-2 {
@@ -347,7 +347,7 @@ header ul a {
 }
 
 .search a{
-  font-size: 0.85rem;
+  font0size: 0.85rem;
   padding: 0 1.8rem;
 }
 
