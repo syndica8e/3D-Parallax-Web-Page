@@ -1,5 +1,7 @@
 # 3D-Parallax-Web-Page
 Designed a Parallax Landing Web page where Mouse Cursor movement creates a Parallax effect using HTML + CSS + JS 
+# Live Deployment
+https://syndcate.vercel.app/
 # Output.GIF
 ![](https://github.com/syndica8e/3D-Parallax-Web-Page/blob/development/output.gif)
 
