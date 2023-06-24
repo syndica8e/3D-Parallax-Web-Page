@@ -1,4 +1,12 @@
 # 3D-Parallax-Web-Page
-Designed a Parallax Web page using HTML + CSS + JS
-
+Designed a Parallax Landing Web page where Mouse Cursor movement creates a Parallax effect using HTML + CSS + JS 
+# Output.GIF
 ![](https://github.com/syndica8e/3D-Parallax-Web-Page/blob/development/output.gif)
+
+GIF is 20 fps but the actual project runs at 60 fps smooth
+# Features
++Added Parallax Effect 
+
++Added Reveal Animation
+
++Added Vignette

@@ -118,9 +118,9 @@ main {
 }
 .bg-img {
   position: absolute;
-  width:211.80%; /*divide by 1440*/
-  top: calc(50% - 28.39%); /*divide by 810px =28.39%*/
-  left: calc(50% + 0.69%); /* 10px / 1440px */
+  width: 175%;
+  top: 1.8%;
+  left: 50%;
   z-index: 1;
 } /*fixed*/
 
@@ -153,15 +153,15 @@ main {
   position: absolute;
   z-index: 5;
   width: 520px;
-  top: calc(50% + 200px);
-  left: calc(50% - 620px);
+  top: calc(50% + 210px);
+  left: calc(50% - 650px);
 }
 
 .mountain-8 {
   position: absolute;
   z-index: 6;
   width: 995px;
-  top: calc(50% + 135px);
+  top: calc(50% + 140px);
   left: calc(50% - 202px);
 }
 
@@ -249,7 +249,7 @@ main {
   /*right most*/
   position: absolute;
   z-index: 15;
-  top: calc(50% + 165px);
+  top: calc(50% + 180px);
   left: calc(50% + 880px);
   width: 419px;
 }
@@ -266,7 +266,7 @@ main {
   /*right front 2nd*/
   position: absolute;
   z-index: 17;
-  top: calc(50% + 260px);
+  top: calc(50% + 270px);
   left: calc(50% + 412px);
   width: 625px;
 } /*fixed*/
@@ -347,7 +347,7 @@ header ul a {
 }
 
 .search a{
-  font0size: 0.85rem;
+  font-size: 0.85rem;
   padding: 0 1.8rem;
 }
 
