@@ -14,3 +14,5 @@ GIF is 20 fps but the actual project runs at 60 fps smooth
 +Added Reveal Animation
 
 +Added Vignette
+
++Added Gradient to TITLE TEXT
