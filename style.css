@@ -1,58 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap");
 
-.animated-gradient-text_background__OCnk0:before {
-  content: var(--content);
-  position: absolute;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-bottom: -10px;
-  background: var(--geist-text-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-}
-
-.animated-gradient-text_background-3__iyrbU:before {
-  animation: animated-gradient-text_fade-background-3__NTKrh 8s infinite;
-}
-
-.animated-gradient-text_foreground-3__kum5b {
-  animation: animated-gradient-text_fade-foreground-3__Hg4NE 8s infinite;
-}
-
-style attribute {
-  --content: 'Ship.';
-  --padding: 0.05em;
-  --start-color: var(--ship-start-gradient);
-  --end-color: var(--ship-end-gradient);
-}
-
-.animated-gradient-text_background__OCnk0 {
-  position: relative;
-  display: block;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-
-
-.animated-gradient-text_foreground__kb6tN{
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-  background-image: linear-gradient(90deg,var(--start-color),var(--end-color));
-  position: relative;
-  z-index: 1;
-}
-
 *,
 *::before,
 *::after {
@@ -61,18 +8,11 @@ style attribute {
   box-sizing: border-box;
 }
 
-h1{
-  font-size: 2em;
-  font-weight: bold;
-}
-
 body {
   font-family: "Poppins", sans-serif;
 }
 ::selection{
-  /* background-color: #0b372dbb; */
-  background-color: var(--geist-selection);
-  color: var(--geist-selection-text-color);
+  background-color: #0b372dbb;
 }
 
 .logo {
@@ -264,24 +204,6 @@ main {
   line-height: 0.88;
 }
 
-.style{
-    --content: 'Syndicate';
-    --padding: 0.05em;
-    --start-color: red var(--ship-start-gradient);
-    --end-color: yellow var(--ship-end-gradient);
-}
-
-.animated-gradient-text_background__OCnk0{
-  position: relative;
-  display: block;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.animated-gradient-text_background-3__iyrbU{
-
-}
-
 .mountain-6 {
   position: absolute;
   z-index: 10;
@@ -441,36 +363,6 @@ header ul a {
   width: initial;
   height: 311.104;
 }
-
-.hero_title__HaAVy{
-  font-size: 4.5rem;
-}
-}
-
-@media(max-width:  720px){
-  .hero_title__HaAVy{
-    font-size: 4.5rem;
-  }
-}
-
-@media(max-width: 960px){
-  .hero_title__HaAVy{
-    display: flex;
-    flex-direction: column;
-    font-fize: 6rem;
-  }
-}
-
-.hero_title__HaAVy{
-  display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    font-size: 5rem;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -.06em;
-    margin: 0 0 40px;
 }
 
 @media (max-width: 520px) {
