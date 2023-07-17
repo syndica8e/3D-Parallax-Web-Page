@@ -192,6 +192,15 @@ main {
   color: #fff;
 }
 
+.gradient-text{
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent ;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  background-image: linear-gradient(90deg,rgba(4, 206, 122, 0.827) ,rgba(186, 206, 0, 0.877) );
+  position: relative;
+}
 .text h2 {
   font-weight: 100;
   font-size: 6.5rem;
