@@ -4,7 +4,8 @@ Designed a Parallax Landing Web page where Mouse Cursor movement creates a Paral
 # Live Deployment
 https://syndcate.vercel.app/
 
-# Output.GIF
+# Preview.GIF
+Please give a minute for this GIF to load for the project preview:
 ![](https://github.com/syndica8e/3D-Parallax-Web-Page/blob/development/output.gif)
 
 GIF is 20 fps but the actual project runs at 60 fps smooth
