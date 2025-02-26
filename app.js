@@ -1,93 +1,131 @@
 const parallax_el = document.querySelectorAll(".parallax");
 const main = document.querySelector("main");
+const bgImage = document.querySelector(".bg-img"); // Get reference to background
 
-let xValue = 0,
-  yValue = 0; /*tracking image displacement*/
-
-let rotateDegree = 0;
-
-function update(cursorPosition) {
-  parallax_el.forEach((el) => {
-    let speedx = el.dataset.speedx;
-    let speedy = el.dataset.speedy;
-    let speedz = el.dataset.speedz;
-    let rotateSpeed = el.dataset.rotation;
-
-    let isInLeft =
-      parseFloat(getComputedStyle(el).left) < window.innerWidth / 2 ? 1 : -1;
-    let zValue = 
-    (cursorPosition - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.1;
-
-    el.style.transform = `translateX(calc(-50% + ${
-      -xValue * speedx
-    }px)) translateY(calc(-50% + ${
-      yValue * speedy
-    }px)) perspective(2300px) translateZ(${zValue * speedz}px) rotateY(${rotateDegree * rotateSpeed}deg)`;
-  });
-}
-
-update(0);
-
-window.addEventListener("mousemove", (e) => {
-
-  if(timeline.isActive()) return;
-
-  xValue = e.clientX - window.innerWidth / 2; /*event object*/
-  yValue = e.clientY - window.innerHeight / 2; /*getting centre position*/
-  /*mouse is now relative to the centre of the screen*/
-  
-  console.log(xValue, yValue); /*shows mouse coordinates*/
-
-  rotateDegree = (xValue / (window.innerWidth / 2)) * 20; //rotate value 0 to 20
-
-  update(e.clientX);
-});
-
-if(window.innerWidth >= 725) {
-  main.style.maxHeight = `${window.innerWidth * 0.6}px`;
+// Preload background image before initializing anything else
+if (bgImage) {
+  // If background image isn't loaded yet
+  if (!bgImage.complete) {
+    // Hide all parallax elements until background is ready
+    parallax_el.forEach(el => {
+      el.style.opacity = "0";
+    });
+    
+    // When background loads, show everything and start animations
+    bgImage.onload = function() {
+      // Make elements visible
+      parallax_el.forEach(el => {
+        el.style.opacity = "1";
+      });
+      
+      // Now initialize all the original code
+      initParallax();
+    };
+    
+    // If there's an error loading the background, still show content
+    bgImage.onerror = function() {
+      parallax_el.forEach(el => {
+        el.style.opacity = "1";
+      });
+      initParallax();
+    };
+  } else {
+    // Background already loaded, proceed normally
+    initParallax();
+  }
 } else {
-  main.style.maxHeight = `${window.innerWidth * 1.6}px`;
+  // No background image found, proceed normally
+  initParallax();
 }
 
-/*GSAP Animations*/
+// Original code wrapped in a function to delay execution until bg is loaded
+function initParallax() {
+  let xValue = 0,
+    yValue = 0; /*tracking image displacement*/
 
-let timeline = gsap.timeline();
+  let rotateDegree = 0;
 
-Array.from(parallax_el)
-.filter((el) => !el.classList.contains("text"))
-.forEach((el) => {
-    timeline.from(
-        el, 
-        {
-            top: `${el.offsetHeight / 2 + +el.dataset.distance}px`,
-            duration: 3.5,
-            ease: "power3.out",
-        },
-        "1"
-    );
-});
+  function update(cursorPosition) {
+    parallax_el.forEach((el) => {
+      let speedx = el.dataset.speedx;
+      let speedy = el.dataset.speedy;
+      let speedz = el.dataset.speedz;
+      let rotateSpeed = el.dataset.rotation;
 
-timeline.from(".text h1", {
-    y: window.innerHeight - document.querySelector(".text h1").getBoundingClientRect().top + 
-    200,
-    duration: 2,
-},
-"2.5"
-)
-.from(
-    ".text h2",
-    {
-        y: -150,
-        opacity: 0,
-        duration: 1.5,
-    },
-    "3"
-)
-.from(
-    ".hide", 
-{
-    opacity: 0,
-    duration: 1.5,
-},
-"3"
-);
+      let isInLeft =
+        parseFloat(getComputedStyle(el).left) < window.innerWidth / 2 ? 1 : -1;
+      let zValue = 
+      (cursorPosition - parseFloat(getComputedStyle(el).left)) * isInLeft * 0.1;
+
+      el.style.transform = `translateX(calc(-50% + ${
+        -xValue * speedx
+      }px)) translateY(calc(-50% + ${
+        yValue * speedy
+      }px)) perspective(2300px) translateZ(${zValue * speedz}px) rotateY(${rotateDegree * rotateSpeed}deg)`;
+    });
+  }
+
+  update(0);
+
+  window.addEventListener("mousemove", (e) => {
+    if(timeline.isActive()) return;
+
+    xValue = e.clientX - window.innerWidth / 2; /*event object*/
+    yValue = e.clientY - window.innerHeight / 2; /*getting centre position*/
+    /*mouse is now relative to the centre of the screen*/
+    
+    // console.log(xValue, yValue); /*shows mouse coordinates*/
+
+    rotateDegree = (xValue / (window.innerWidth / 2)) * 20; //rotate value 0 to 20
+
+    update(e.clientX);
+  });
+
+  if(window.innerWidth >= 725) {
+    main.style.maxHeight = `${window.innerWidth * 0.6}px`;
+  } else {
+    main.style.maxHeight = `${window.innerWidth * 1.6}px`;
+  }
+
+  /*GSAP Animations*/
+  let timeline = gsap.timeline();
+
+  Array.from(parallax_el)
+  .filter((el) => !el.classList.contains("text"))
+  .forEach((el) => {
+      timeline.from(
+          el, 
+          {
+              top: `${el.offsetHeight / 2 + +el.dataset.distance}px`,
+              duration: 3.5,
+              ease: "power3.out",
+          },
+          "1"
+      );
+  });
+
+  timeline.from(".text h1", {
+      y: window.innerHeight - document.querySelector(".text h1").getBoundingClientRect().top + 
+      200,
+      duration: 2,
+  },
+  "2.5"
+  )
+  .from(
+      ".text h2",
+      {
+          y: -150,
+          opacity: 0,
+          duration: 1.5,
+      },
+      "3"
+  )
+  .from(
+      ".hide", 
+  {
+      opacity: 0,
+      duration: 1.5,
+  },
+  "3"
+  );
+}
