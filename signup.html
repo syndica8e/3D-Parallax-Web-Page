@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syndicate - Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-light: #a5e65a;
+            --primary: #7bc455;
+            --primary-dark: #4d9b2d;
+            --accent: #34877e;
+            --dark: #353;
+            --bg-color: #f4f9f0;
+            --text-color: #333;
+            --light-text: #777;
+            --error: #e74c3c;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .side-banner {
+            flex: 1;
+            background-image: linear-gradient(rgba(53, 51, 51, 0.5), rgba(53, 51, 51, 0.5)), url('https://images.unsplash.com/photo-1606423461853-9b5a733169b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .side-banner {
+                display: block;
+            }
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(53, 51, 51, 0.9), rgba(53, 51, 51, 0.1));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .overlay h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .overlay p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-container {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .form-title p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .signup-form {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 196, 85, 0.2);
+        }
+        
+        .form-text {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--light-text);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-check-input {
+            margin-right: 0.5rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        
+        .form-check-label {
+            font-size: 0.9rem;
+        }
+        
+        .form-check-label a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .form-check-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .form-selects {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-select {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px 12px;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 196, 85, 0.2);
+        }
+
+        .required-field::after {
+            content: "*";
+            color: var(--error);
+            margin-left: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .form-title h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="side-banner">
+        <div class="overlay">
+            <h2>Project Syndicate</h2>
+            <p>Join our holistic health community and experience the power of homeopathic treatment designed specifically for your wellness journey.</p>
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <div class="logo">
+            <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Syndicate Logo" />
+        </div>
+        
+        <div class="form-title">
+            <h1>Create Your Account</h1>
+            <p>Fill in your information to get started with our homeopathic services</p>
+        </div>
+        
+        <form class="signup-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName" class="form-label required-field">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="form-label required-field">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email" class="form-label required-field">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="form-label required-field">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="(123) 456-7890" required>
+                <small class="form-text">We'll send a verification code to this number</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label required-field">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Create a secure password" required>
+                <small class="form-text">Must be at least 8 characters with a number and symbol</small>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age" class="form-label required-field">Age</label>
+                    <input type="number" class="form-control" id="age" placeholder="30" min="1" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label for="sex" class="form-label required-field">Sex</label>
+                    <select class="form-select" id="sex" required>
+                        <option value="" selected disabled>Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="caseId" class="form-label">Case ID (Optional)</label>
+                <input type="text" class="form-control" id="caseId" placeholder="If you have an existing case ID">
+                <small class="form-text">Leave blank if you're a new patient</small>
+            </div>
+            
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms" required>
+                <label class="form-check-label" for="terms">
+                    I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create Account</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Sign in</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

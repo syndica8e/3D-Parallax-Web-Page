@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syndicate - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-light: #a5e65a;
+            --primary: #7bc455;
+            --primary-dark: #4d9b2d;
+            --accent: #34877e;
+            --dark: #353;
+            --bg-color: #f4f9f0;
+            --text-color: #333;
+            --light-text: #777;
+            --error: #e74c3c;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .side-banner {
+            flex: 1;
+            background-image: linear-gradient(rgba(53, 51, 51, 0.5), rgba(53, 51, 51, 0.5)), url('https://images.unsplash.com/photo-1606423461853-9b5a733169b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .side-banner {
+                display: block;
+            }
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(53, 51, 51, 0.9), rgba(53, 51, 51, 0.1));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .overlay h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .overlay p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-container {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .form-title p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .login-form {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--light-text);
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 196, 85, 0.2);
+        }
+        
+        .form-text {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--light-text);
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-check-input {
+            margin-right: 0.5rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        
+        .form-check-label {
+            font-size: 0.9rem;
+        }
+        
+        .form-check-label a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .form-check-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .signup-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+        
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .otp-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .otp-input {
+            flex: 1;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 196, 85, 0.2);
+        }
+        
+        .resend-otp {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .resend-otp button {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .resend-otp button:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #eee;
+        }
+        
+        .divider::before {
+            margin-right: 1rem;
+        }
+        
+        .divider::after {
+            margin-left: 1rem;
+        }
+        
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .social-btn img {
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .form-title h1 {
+                font-size: 1.7rem;
+            }
+            
+            .otp-container {
+                gap: 0.25rem;
+            }
+            
+            .otp-input {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="side-banner">
+        <div class="overlay">
+            <h2>Project Syndicate</h2>
+            <p>Sign in to access your personalized homeopathic treatment plan and continue your wellness journey.</p>
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <div class="logo">
+            <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="Syndicate Logo" />
+        </div>
+        
+        <div class="form-title">
+            <h1>Welcome Back</h1>
+            <p>Sign in to access your account</p>
+        </div>
+        
+        <div class="login-form">
+            <div class="tab-container">
+                <div class="tab active" id="email-tab">Email & Password</div>
+                <div class="tab" id="phone-tab">Phone Number & OTP</div>
+            </div>
+            
+            <div class="tab-content active" id="email-content">
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember">
+                        <label class="form-check-label" for="remember">
+                            Remember me
+                        </label>
+                    </div>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+            
+            <div class="tab-content" id="phone-content">
+                <form id="phone-form">
+                    <div class="form-group" id="phone-input-container">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="(123) 456-7890" required>
+                        <small class="form-text">We'll send a verification code to this number</small>
+                        <button type="button" class="btn btn-primary" style="margin-top: 1rem;" id="send-otp-btn">Send OTP</button>
+                    </div>
+                    
+                    <div id="otp-verification" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label">Enter OTP</label>
+                            <div class="otp-container">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric">
+                            </div>
+                            <small class="form-text">A 6-digit code has been sent to your phone</small>
+                        </div>
+                        
+                        <div class="resend-otp">
+                            <button type="button" id="resend-otp">Didn't receive the code? Resend</button>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Verify & Sign In</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="divider">Or continue with</div>
+            
+            <div class="social-login">
+                <div class="social-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                    Google
+                </div>
+                <div class="social-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                    Facebook
+                </div>
+            </div>
+            
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const emailTab = document.getElementById('email-tab');
+            const phoneTab = document.getElementById('phone-tab');
+            const emailContent = document.getElementById('email-content');
+            const phoneContent = document.getElementById('phone-content');
+            
+            emailTab.addEventListener('click', function() {
+                emailTab.classList.add('active');
+                phoneTab.classList.remove('active');
+                emailContent.classList.add('active');
+                phoneContent.classList.remove('active');
+            });
+            
+            phoneTab.addEventListener('click', function() {
+                phoneTab.classList.add('active');
+                emailTab.classList.remove('active');
+                phoneContent.classList.add('active');
+                emailContent.classList.remove('active');
+            });
+            
+            // OTP input handling
+            const otpInputs = document.querySelectorAll('.otp-input');
+            
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('input', function() {
+                    if (this.value.length === 1) {
+                        if (index < otpInputs.length - 1) {
+                            otpInputs[index + 1].focus();
+                        }
+                    }
+                });
+                
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && this.value.length === 0) {
+                        if (index > 0) {
+                            otpInputs[index - 1].focus();
+                        }
+                    }
+                });
+            });
+            
+            // Send OTP button
+            const sendOtpBtn = document.getElementById('send-otp-btn');
+            const phoneInputContainer = document.getElementById('phone-input-container');
+            const otpVerification = document.getElementById('otp-verification');
+            
+            sendOtpBtn.addEventListener('click', function() {
+                const phoneNumber = document.getElementById('phone').value;
+                if (phoneNumber.trim() !== '') {
+                    // Here you would call your API to send the OTP
+                    // For now, we'll just show the OTP input fields
+                    phoneInputContainer.style.display = 'none';
+                    otpVerification.style.display = 'block';
+                }
+            });
+
+            // Resend OTP
+            document.getElementById('resend-otp').addEventListener('click', function() {
+                alert('OTP has been resent!');
+                // In a real implementation, you would call your API here
+            });
+
+            // Form submission
+            document.getElementById('email-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Handle email form submission
+                alert('Email login would be processed here');
+            });
+
+            document.getElementById('phone-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Handle phone form submission when OTP is entered
+                if (document.getElementById('otp-verification').style.display !== 'none') {
+                    alert('OTP verification would be processed here');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
